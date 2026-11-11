@@ -75,14 +75,13 @@ void __attribute__((optimize("-O1"), long_call, noreturn, used))Dummy_Handler(vo
 }
 
 /* MISRAC 2023 deviation block start */
-/* MISRA C-2023 Rule 8.6 deviated 32 times.  Deviation record ID -  H3_MISRAC_2023_R_8_6_DR_1 */
+/* MISRA C-2023 Rule 8.6 deviated 30 times.  Deviation record ID -  H3_MISRAC_2023_R_8_6_DR_1 */
 /* Device vectors list dummy definition*/
 extern void SVCall_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void PendSV_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void SysTick_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void SYSTEM_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void WDT_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
-extern void EIC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void FREQM_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void MCRAMC_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void NVMCTRL_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
@@ -90,7 +89,6 @@ extern void DMAC_Handler               ( void ) __attribute__((weak, alias("Dumm
 extern void EVSYS_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void SERCOM1_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void SERCOM3_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
-extern void SERCOM4_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void SERCOM5_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void CAN0_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
 extern void CAN1_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler"),noreturn));
@@ -118,7 +116,7 @@ extern void ICM_Handler                ( void ) __attribute__((weak, alias("Dumm
 
 
 /* MISRAC 2023 deviation block start */
-/* MISRA C-2023 Rule 2.8 deviated 32 times.  Deviation record ID -  H3_MISRAC_2023_R_2_8_DR_1 */
+/* MISRA C-2023 Rule 2.8 deviated 30 times.  Deviation record ID -  H3_MISRAC_2023_R_2_8_DR_1 */
 
 __attribute__ ((section(".vectors"), used))
 const H3DeviceVectors exception_table=
@@ -135,7 +133,7 @@ const H3DeviceVectors exception_table=
     .pfnSYSTEM_Handler             = SYSTEM_Handler,
     .pfnWDT_Handler                = WDT_Handler,
     .pfnRTC_Handler                = RTC_InterruptHandler,
-    .pfnEIC_Handler                = EIC_Handler,
+    .pfnEIC_Handler                = EIC_InterruptHandler,
     .pfnFREQM_Handler              = FREQM_Handler,
     .pfnMCRAMC_Handler             = MCRAMC_Handler,
     .pfnNVMCTRL_Handler            = NVMCTRL_Handler,
@@ -145,7 +143,7 @@ const H3DeviceVectors exception_table=
     .pfnSERCOM1_Handler            = SERCOM1_Handler,
     .pfnSERCOM2_Handler            = SERCOM2_SPI_InterruptHandler,
     .pfnSERCOM3_Handler            = SERCOM3_Handler,
-    .pfnSERCOM4_Handler            = SERCOM4_Handler,
+    .pfnSERCOM4_Handler            = SERCOM4_USART_InterruptHandler,
     .pfnSERCOM5_Handler            = SERCOM5_Handler,
     .pfnCAN0_Handler               = CAN0_Handler,
     .pfnCAN1_Handler               = CAN1_Handler,

@@ -81,6 +81,14 @@
 #define SCL_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 9U)) & 0x01U)
 #define SCL_PIN                  PORT_PIN_PA09
 
+/*** Macros for UART_TX pin ***/
+#define UART_TX_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 10U)) & 0x01U)
+#define UART_TX_PIN                  PORT_PIN_PB10
+
+/*** Macros for UART_RX pin ***/
+#define UART_RX_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 11U)) & 0x01U)
+#define UART_RX_PIN                  PORT_PIN_PB11
+
 /*** Macros for MOSI pin ***/
 #define MOSI_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 12U)) & 0x01U)
 #define MOSI_PIN                  PORT_PIN_PA12
@@ -101,6 +109,10 @@
 /*** Macros for MISO pin ***/
 #define MISO_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 15U)) & 0x01U)
 #define MISO_PIN                  PORT_PIN_PA15
+
+/*** Macros for BTN pin ***/
+#define BTN_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 27U)) & 0x01U)
+#define BTN_PIN                  PORT_PIN_PA27
 
 // *****************************************************************************
 /* PORT Group

@@ -170,11 +170,15 @@ void SYS_Initialize ( void* data )
 
     SERCOM1_USART_Initialize();
 
-    SERCOM0_I2C_Initialize();
-
     EVSYS_Initialize();
 
+    SERCOM0_I2C_Initialize();
+
 	SYSTICK_TimerInitialize();
+    SERCOM4_USART_Initialize();
+
+    EIC_Initialize();
+
     RTC_Initialize();
 
 
